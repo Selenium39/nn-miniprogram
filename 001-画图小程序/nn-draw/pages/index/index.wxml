@@ -1,0 +1,69 @@
+<view class="container">
+  <!--画布区域-->
+  <view class="canvas_area">
+    <canvas id="myCanvas" type="2d" class="myCanvas" 
+            disable-scroll="false" 
+            bindtouchstart="touchStart" 
+            bindtouchmove="touchMove" 
+            bindtouchend="touchEnd">
+    </canvas>
+  </view>
+
+  <!-- 展开的设置区域 -->
+  <view class="settings_area {{showSettings ? 'settings_show' : ''}}" wx:if="{{showSettings}}">
+    <!-- 画笔粗细设置 -->
+    <block wx:if="{{settingType === 'size'}}">
+      <view class="setting_item">
+        <text>画笔粗细</text>
+        <slider min="1" max="50" step="1" value="{{pen}}" show-value="{{true}}" bindchanging="penSelect">
+        </slider>
+      </view>
+    </block>
+
+    <!-- RGB颜色设置 -->
+    <block wx:if="{{settingType === 'color'}}">
+      <!-- 预设颜色 -->
+      <view class="preset-colors">
+        <view class="preset-color" style="background: #000000" bindtap="selectPresetColor" data-color="0,0,0"></view>
+        <view class="preset-color" style="background: #ff0000" bindtap="selectPresetColor" data-color="255,0,0"></view>
+        <view class="preset-color" style="background: #00ff00" bindtap="selectPresetColor" data-color="0,255,0"></view>
+        <view class="preset-color" style="background: #0000ff" bindtap="selectPresetColor" data-color="0,0,255"></view>
+        <view class="preset-color" style="background: #ffff00" bindtap="selectPresetColor" data-color="255,255,0"></view>
+        <view class="preset-color" style="background: #ff00ff" bindtap="selectPresetColor" data-color="255,0,255"></view>
+      </view>
+      <!-- RGB滑块 -->
+      <view class="setting_item">
+        <text>R (红色: {{r}})</text>
+        <slider min="0" max="255" value="{{r}}" activeColor="#ff0000" bindchanging="changeRed">
+        </slider>
+      </view>
+      <view class="setting_item">
+        <text>G (绿色: {{g}})</text>
+        <slider min="0" max="255" value="{{g}}" activeColor="#00ff00" bindchanging="changeGreen">
+        </slider>
+      </view>
+      <view class="setting_item">
+        <text>B (蓝色: {{b}})</text>
+        <slider min="0" max="255" value="{{b}}" activeColor="#0000ff" bindchanging="changeBlue">
+        </slider>
+      </view>
+      <view class="color_preview" style="background: rgb({{r}},{{g}},{{b}})"></view>
+    </block>
+  </view>
+
+  <!--画布工具区域-->
+  <view class="canvas_tools">
+    <view class="basic_tools">
+      <view class="tool_btn">
+        <text class="ix icon-write" bindtap="toggleSizeSettings"></text>
+      </view>
+      <view class="tool_btn" style="color: {{color}};">
+        <text class="ix icon-colorlens" bindtap="toggleColorSettings"></text>
+      </view>
+      <view class="tool_btn eraser" bindtap="clearCanvas"></view>
+      <view class="tool_btn">
+        <text class="ix icon-share" bindtap="shareImage"></text>
+      </view>
+    </view>
+  </view>
+</view>
