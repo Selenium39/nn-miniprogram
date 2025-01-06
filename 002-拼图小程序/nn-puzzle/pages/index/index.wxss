@@ -1,0 +1,95 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+  height: 100vh;
+  background: #f5f5f5;
+}
+
+.game-header {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.stats {
+  display: flex;
+  justify-content: space-around;
+  font-size: 16px;
+  color: #333;
+}
+
+.canvas-container {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.puzzle-canvas {
+  background: #fff;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  border-radius: 8px;
+}
+
+.start-tip {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: #666;
+  font-size: 14px;
+}
+
+.controls {
+  margin-top: 30px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px; /* 按钮之间的间距 */
+}
+
+.control-btn {
+  width: 80%;
+  height: 44px;
+  line-height: 44px;
+  border-radius: 22px;
+  font-size: 16px;
+  position: relative;
+}
+
+/* 主按钮样式（开始游戏） */
+.control-btn.primary {
+  background: #007AFF;
+  color: #fff;
+  border: none;
+  box-shadow: 0 2px 6px rgba(0,122,255,0.2);
+}
+
+/* 次要按钮样式（换一个） */
+.control-btn.secondary {
+  background: #fff;
+  color: #007AFF;
+  border: 1px solid #007AFF;
+}
+
+/* 轮廓按钮样式（上传图片） */
+.control-btn.outline {
+  background: #fff;
+  color: #666;
+  border: 1px solid #ddd;
+}
+
+.control-btn:active {
+  opacity: 0.8;
+}
+
+/* 图标样式 */
+.icon-refresh, .icon-upload {
+  margin-right: 4px;
+}

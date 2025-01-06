@@ -1,0 +1,29 @@
+<view class="container">
+  <view class="game-header">
+    <view class="stats">
+      <text>步数: {{moves}}</text>
+      <text>用时: {{time}}s</text>
+    </view>
+  </view>
+  <view class="canvas-container">
+    <block wx:if="{{!imgLoaded}}">
+      <view class="start-tip">
+        <text>加载中...</text>
+      </view>
+    </block>
+    <canvas type="2d" id="puzzleCanvas" class="puzzle-canvas" 
+      bindtouchstart="touchStart" 
+      bindtouchmove="touchMove" 
+      bindtouchend="touchEnd" 
+      style="width:{{width}}px; height:{{height}}px;">
+    </canvas>
+  </view>
+  <view class="controls">
+    <button class="control-btn secondary" bindtap="nextImage">
+      <text class="icon-refresh"></text> 换张图片
+    </button>
+    <button wx:if="{{imgLoaded && !gameStarted}}" class="control-btn primary" bindtap="startGame">
+      开始游戏
+    </button>
+  </view>
+</view>
