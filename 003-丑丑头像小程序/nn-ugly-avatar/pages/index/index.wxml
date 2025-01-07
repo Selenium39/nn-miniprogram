@@ -1,0 +1,13 @@
+<view class="container">
+  <view class="canvas-container">
+    <canvas type="2d" id="faceCanvas" class="face-canvas"></canvas>
+  </view>
+  <view class="controls">
+    <button class="control-btn secondary" bindtap="generateFace">
+      <text class="icon-refresh"></text> 随机生成
+    </button>
+    <button class="control-btn outline" bindtap="downloadCanvasAsImage">
+      <text class="icon-download"></text> 下载
+    </button>
+  </view>
+</view>
