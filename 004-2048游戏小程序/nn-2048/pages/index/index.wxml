@@ -1,0 +1,52 @@
+<view class="game-container">
+  <view class="header">
+    <view class="score-container">
+      <text>分数:</text>
+      <text class="score">{{score}}</text>
+    </view>
+    <view class="buttons">
+      <view class="rule-button" bindtap="toggleRules">
+        <text class="icon-info"></text>
+        规则
+      </view>
+      <view class="restart-button" bindtap="restart">重新开始</view>
+    </view>
+  </view>
+
+  <!-- 游戏规则说明 -->
+  <view class="rules-container {{showRules ? 'show' : ''}}">
+    <view class="rules-content">
+      <view class="rules-title">游戏规则</view>
+      <view class="rules-text">
+        <text>1. 在4x4的棋盘上滑动数字方块</text>
+        <text>2. 相同数字的方块相撞时会合并</text>
+        <text>3. 每次移动后会在空位随机出现2或4</text>
+        <text>4. 当出现2048时获得胜利</text>
+        <text>5. 无法移动时游戏结束</text>
+      </view>
+      <view class="rules-tips">
+        操作方式：上下左右滑动屏幕移动方块
+      </view>
+      <view class="close-button" bindtap="toggleRules">关闭</view>
+    </view>
+  </view>
+
+  <view class="game-board" bindtouchstart="handleTouchStart" bindtouchend="handleTouchEnd">
+    <view class="row" wx:for="{{board}}" wx:for-item="row" wx:key="index">
+      <view class="cell cell-{{item}}" wx:for="{{row}}" wx:key="cellIndex">
+        <text wx:if="{{item !== 0}}">{{item}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="game-over" wx:if="{{gameOver || isWin}}">
+    <view class="game-over-text {{isWin ? 'win-text' : 'lose-text'}}">
+        {{isWin ? '恭喜获胜！' : '很遗憾！'}}
+    </view>
+    <view class="game-over-desc">
+        {{isWin ? '成功合成2048，你太厉害了！' : '游戏结束了，要不要再试一次？'}}
+    </view>
+    <view class="final-score">最终分数: {{score}}</view>
+    <view class="restart-button" bindtap="restart">再来一局</view>
+</view>
+</view>
